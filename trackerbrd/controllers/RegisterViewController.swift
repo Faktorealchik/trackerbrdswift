@@ -10,16 +10,10 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var uploadImage: UIButton!
-    @IBOutlet weak var navBar: UINavigationBar!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
+        navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func uploadImagePressed(_ sender: UIButton) {

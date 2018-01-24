@@ -6,7 +6,8 @@ target 'trackerbrd' do
   use_frameworks!
 
   pod 'SkyFloatingLabelTextField', '~> 3.0'
- 
+  pod 'CommonCryptoModule', '~> 1.0.2'
+  pod 'SwiftyJSON' 
 
   target 'trackerbrdTests' do
     inherit! :search_paths
