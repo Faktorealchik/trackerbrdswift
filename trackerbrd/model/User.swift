@@ -8,17 +8,17 @@
 
 import Foundation
 
+typealias Json = [String: Any]
 struct User {
-    typealias JSON = [String: Any]
-    public var dict: JSON
+    
+    public var dict: Json
     var id: Int
     var login: String
     var token: String
     var type: Int
     
-    init?(dict: JSON) {
-        print(dict)
-        guard let user = dict["user"] as? JSON,
+    init?(dict: Json) {
+        guard let user = dict["user"] as? Json,
         let token = dict["token"] as? String else { return nil }
         guard let login = user["login"] as? String,
             let type = user["type"] as? Int,

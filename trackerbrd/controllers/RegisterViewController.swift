@@ -52,14 +52,3 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
 }
 
 
-
-
-
-
-
-
-
-
-
-
-

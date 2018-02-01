@@ -14,6 +14,7 @@
 		052A4B2B200E4CFD00520B21 /* trackerbrdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A4B2A200E4CFD00520B21 /* trackerbrdTests.swift */; };
 		052A4B36200E4CFD00520B21 /* trackerbrdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A4B35200E4CFD00520B21 /* trackerbrdUITests.swift */; };
 		052A4B44200E656100520B21 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A4B43200E656100520B21 /* LoginViewController.swift */; };
+		053C8F38201A3B7900092955 /* ManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053C8F37201A3B7900092955 /* ManagerTableViewCell.swift */; };
 		054B9F03201466B700C33AA8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F02201466B700C33AA8 /* NetworkService.swift */; };
 		054B9F05201468C900C33AA8 /* UsersJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F04201468C900C33AA8 /* UsersJson.swift */; };
 		054B9F072014691F00C33AA8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F062014691F00C33AA8 /* NetworkError.swift */; };
@@ -21,6 +22,13 @@
 		054B9F0B20146E0B00C33AA8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F0A20146E0B00C33AA8 /* Links.swift */; };
 		054B9F0D20147F3800C33AA8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F0C20147F3800C33AA8 /* StringExtension.swift */; };
 		05634A6B200FCB6B0087EBD0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634A6A200FCB6B0087EBD0 /* RegisterViewController.swift */; };
+		0586E8272022E21400FF1994 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */; };
+		0586E8292022E28A00FF1994 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E8282022E28A00FF1994 /* NotificationTableViewController.swift */; };
+		0586E82B2022E71200FF1994 /* TracNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E82A2022E71200FF1994 /* TracNotification.swift */; };
+		0586E82D2022E8D700FF1994 /* TracNotificationsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E82C2022E8D700FF1994 /* TracNotificationsJson.swift */; };
+		0586E82F2022EB6E00FF1994 /* TracNotificationNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E82E2022EB6E00FF1994 /* TracNotificationNetworkService.swift */; };
+		0586E8312023143300FF1994 /* Utilits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E8302023143300FF1994 /* Utilits.swift */; };
+		05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */; };
 		05B5ED15200E82A400D8E98F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B5ED14200E82A400D8E98F /* User.swift */; };
 		05F2E2452017A23D00082763 /* MainManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F2E2442017A23D00082763 /* MainManagerViewController.swift */; };
 		199E9CA2829274D52A229C56 /* Pods_trackerbrdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7421279EF4C76BAF6BBA4462 /* Pods_trackerbrdTests.framework */; };
@@ -59,6 +67,7 @@
 		052A4B35200E4CFD00520B21 /* trackerbrdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trackerbrdUITests.swift; sourceTree = "<group>"; };
 		052A4B37200E4CFD00520B21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		052A4B43200E656100520B21 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		053C8F37201A3B7900092955 /* ManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTableViewCell.swift; sourceTree = "<group>"; };
 		054B9F02201466B700C33AA8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		054B9F04201468C900C33AA8 /* UsersJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersJson.swift; sourceTree = "<group>"; };
 		054B9F062014691F00C33AA8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -66,6 +75,13 @@
 		054B9F0A20146E0B00C33AA8 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		054B9F0C20147F3800C33AA8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		05634A6A200FCB6B0087EBD0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		0586E8282022E28A00FF1994 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		0586E82A2022E71200FF1994 /* TracNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracNotification.swift; sourceTree = "<group>"; };
+		0586E82C2022E8D700FF1994 /* TracNotificationsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracNotificationsJson.swift; sourceTree = "<group>"; };
+		0586E82E2022EB6E00FF1994 /* TracNotificationNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracNotificationNetworkService.swift; sourceTree = "<group>"; };
+		0586E8302023143300FF1994 /* Utilits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilits.swift; sourceTree = "<group>"; };
+		05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsViewController.swift; sourceTree = "<group>"; };
 		05B5ED14200E82A400D8E98F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05F2E2442017A23D00082763 /* MainManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManagerViewController.swift; sourceTree = "<group>"; };
 		09D45AD393D417931448AE97 /* Pods-trackerbrdUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trackerbrdUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-trackerbrdUITests/Pods-trackerbrdUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +181,7 @@
 				054B9F02201466B700C33AA8 /* NetworkService.swift */,
 				054B9F062014691F00C33AA8 /* NetworkError.swift */,
 				054B9F0820146CA500C33AA8 /* UserNetworkService.swift */,
+				0586E82E2022EB6E00FF1994 /* TracNotificationNetworkService.swift */,
 				054B9F0A20146E0B00C33AA8 /* Links.swift */,
 			);
 			path = network;
@@ -176,6 +193,8 @@
 				052A4B43200E656100520B21 /* LoginViewController.swift */,
 				05634A6A200FCB6B0087EBD0 /* RegisterViewController.swift */,
 				05F2E2442017A23D00082763 /* MainManagerViewController.swift */,
+				05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */,
+				0586E8282022E28A00FF1994 /* NotificationTableViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -185,6 +204,8 @@
 			children = (
 				05B5ED14200E82A400D8E98F /* User.swift */,
 				054B9F04201468C900C33AA8 /* UsersJson.swift */,
+				0586E82A2022E71200FF1994 /* TracNotification.swift */,
+				0586E82C2022E8D700FF1994 /* TracNotificationsJson.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -192,6 +213,8 @@
 		05E8EEAC20111AA1003961E7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				053C8F37201A3B7900092955 /* ManagerTableViewCell.swift */,
+				0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -205,6 +228,7 @@
 				052A4B1E200E4CFD00520B21 /* LaunchScreen.storyboard */,
 				052A4B21200E4CFD00520B21 /* Info.plist */,
 				054B9F0C20147F3800C33AA8 /* StringExtension.swift */,
+				0586E8302023143300FF1994 /* Utilits.swift */,
 			);
 			path = supporting;
 			sourceTree = "<group>";
@@ -529,17 +553,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0586E8292022E28A00FF1994 /* NotificationTableViewController.swift in Sources */,
+				0586E8272022E21400FF1994 /* NotificationTableViewCell.swift in Sources */,
+				0586E82B2022E71200FF1994 /* TracNotification.swift in Sources */,
 				054B9F03201466B700C33AA8 /* NetworkService.swift in Sources */,
+				05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */,
 				054B9F072014691F00C33AA8 /* NetworkError.swift in Sources */,
+				0586E8312023143300FF1994 /* Utilits.swift in Sources */,
 				05F2E2452017A23D00082763 /* MainManagerViewController.swift in Sources */,
 				054B9F0D20147F3800C33AA8 /* StringExtension.swift in Sources */,
 				052A4B44200E656100520B21 /* LoginViewController.swift in Sources */,
 				054B9F05201468C900C33AA8 /* UsersJson.swift in Sources */,
 				054B9F0B20146E0B00C33AA8 /* Links.swift in Sources */,
+				053C8F38201A3B7900092955 /* ManagerTableViewCell.swift in Sources */,
 				052A4B16200E4CFC00520B21 /* AppDelegate.swift in Sources */,
 				054B9F0920146CA500C33AA8 /* UserNetworkService.swift in Sources */,
 				05B5ED15200E82A400D8E98F /* User.swift in Sources */,
 				05634A6B200FCB6B0087EBD0 /* RegisterViewController.swift in Sources */,
+				0586E82D2022E8D700FF1994 /* TracNotificationsJson.swift in Sources */,
+				0586E82F2022EB6E00FF1994 /* TracNotificationNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

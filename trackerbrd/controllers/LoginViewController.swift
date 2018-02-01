@@ -67,10 +67,10 @@ class LoginViewController: UIViewController {
             sender.isHidden = true
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
-            makeRequestForUser(login, password, sender)
+            makeRequestForUser(login, password.md5, sender)
         } else {
             let reason = login == "" ? "email" : "password"
-            self.createAlert(with: "Please, fill in your \(reason)")
+            self.present(Utilits.createAlert(with: "Please, fill in your \(reason)"), animated: true)
         }
     }
     
@@ -80,10 +80,10 @@ class LoginViewController: UIViewController {
         } catch {
             self.doMainAsync {
                 sender.isHidden = false
+                self.present(Utilits.createAlert(with: error.localizedDescription), animated: true)
+                self.hideActivityIndicator()
+                return
             }
-            self.createAlert(with: error.localizedDescription)
-            self.hideActivityIndicator()
-            return
         }
     }
     
@@ -92,12 +92,11 @@ class LoginViewController: UIViewController {
         let data = try JSON(usr).rawData()
         UserNetworkService.shared.login(with: data){ [weak self] (user, error) in
             guard error == nil else {
-                self?.createAlert(with: "Password incorrect")
-                //self?.showButton(sender)
                 self?.doMainAsync {
+                    self?.present(Utilits.createAlert(with: "Password incorrect"), animated: true)
                     sender.isHidden = false
+                    self?.activityIndicator.isHidden = true
                 }
-                self?.hideActivityIndicator()
                 return
             }
             guard let user = user else {
@@ -108,6 +107,7 @@ class LoginViewController: UIViewController {
                 let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
                 userDefaults?.set(user.token, forKey: "token")
                 userDefaults?.set(user.type, forKey: "type")
+                userDefaults?.set(user.id, forKey: "idUser")
                 userDefaults?.set(self?.rememberMe, forKey: "rememberMe")
                 userDefaults?.synchronize()
                 self?.hideActivityIndicator()
@@ -134,15 +134,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func createAlert(with error: String?) {
-        doMainAsync {
-            let alert = UIAlertController(title: "Error", message: error ?? "Unexpected error", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(ok)
-            self.present(alert, animated: true)
-        }
-    }
-    
     private func performSegue(_ type: Int){
         if type == 0 {
             self.performSegue(withIdentifier: "segueManager", sender: self)
@@ -153,6 +144,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func rememberMePressed(_ sender: UISwitch) {
         rememberMe = sender.isOn
+    }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue){
+        let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
+        userDefaults?.set(false, forKey: "rememberMe")
+        userDefaults?.synchronize()
     }
 }
 

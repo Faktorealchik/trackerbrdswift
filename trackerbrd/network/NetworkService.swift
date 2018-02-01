@@ -18,9 +18,17 @@ class NetworkService {
     
     public func getData(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         let session = URLSession.shared
+        let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
+        let token = userDefaults?.string(forKey: "token")
+        let idUser = userDefaults?.integer(forKey: "idUser")
+        guard idUser != nil else {completion(nil, nil, NetworkError.FailInternetError); return;}
+        
+        var request = URLRequest(url: url)
+        request.setValue(token, forHTTPHeaderField: "token")
+        request.setValue(String(describing: idUser!), forHTTPHeaderField: "userId")
         
         DispatchQueue.main.async {
-            session.dataTask(with: url) { (data, response, error) in
+            session.dataTask(with: request) { (data, response, error) in
                 completion(data, response, error)
             }.resume()
         }
