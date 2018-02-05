@@ -19,4 +19,10 @@ enum Links: String {
     case restore = "/reg/restore" //post
     
     case notifications = "/my/notifications" //get
+    
+    case companies = "/company/list" //get
+    case company = "/company/" //get & delete
+    case updateCompany = "/company" //post update & put create
+    
+    case trucks = "/trucks" //get
 }

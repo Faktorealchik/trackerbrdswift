@@ -20,6 +20,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         
+        let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
+        let token = userDefaults?.string(forKey: "token")
+        let remember = userDefaults?.bool(forKey: "rememberMe")
+        let type = userDefaults?.integer(forKey: "type")
+        if token != nil && type != nil && remember != nil && remember! {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootVC = storyboard.instantiateViewController(withIdentifier: "FirstNavigationController")
+            var initialViewController: UIViewController
+            if type == 1 {
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "Driver")
+            } else {
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "Manager")
+            }
+            self.window?.rootViewController = rootVC
+            self.window?.makeKeyAndVisible()
+            rootVC.present(initialViewController, animated: false)
+        }
+        
         return true
     }
 

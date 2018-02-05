@@ -10,7 +10,14 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var dataLabel: UILabel!
     
+    var item: SettingsViewModelItem? {
+        didSet {
+            guard let item = item as? NotificationViewModel else { return }
+            descriptionLabel.text = item.name
+            dataLabel.text = item.description
+        }
+    }
 }

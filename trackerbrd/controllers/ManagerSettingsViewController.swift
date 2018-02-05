@@ -18,8 +18,55 @@ class ManagerSettingsTableViewController: UITableViewController, MFMailComposeVi
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 8 && MFMailComposeViewController.canSendMail() {
-            sendEmail()
+        
+        let destignationVC = storyboard?.instantiateViewController(withIdentifier: "AfterSettings") as! ModelViewSettingsTableViewController
+        
+        switch indexPath.row {
+        case 0:
+            destignationVC.title = "Notifications"
+            navigationController?.pushViewController(destignationVC, animated: true)
+            getNotifications(inVC: destignationVC)
+        case 1:
+            destignationVC.title = "Companies"
+            let item = UIBarButtonItem(barButtonSystemItem: .add, target: destignationVC.self, action: #selector(destignationVC.companyRowAddAction))
+            destignationVC.navigationItem.rightBarButtonItem = item
+            navigationController?.pushViewController(destignationVC, animated: true)
+            self.getCompanies(inVC: destignationVC)
+        case 2: break
+        case 3:
+            destignationVC.title = "Trucks"
+            let item = UIBarButtonItem(barButtonSystemItem: .add, target: destignationVC, action: #selector(destignationVC.truckRowAddAction))
+            destignationVC.navigationItem.rightBarButtonItem = item
+            navigationController?.pushViewController(destignationVC, animated: true)
+            self.getTrucks(inVC: destignationVC)
+        case 8:
+            if MFMailComposeViewController.canSendMail() {
+                sendEmail()
+            }
+        default:
+            break
+        }
+    }
+    
+    private func getNotifications(inVC viewController: ModelViewSettingsTableViewController){
+        DispatchQueue.global().async {
+            TracNotificationNetworkService.shared.getNotifications(completion: { [weak self] (notif, error) in
+                guard error == nil else {
+                    self?.createAlert(with: error?.localizedDescription)
+                    return
+                }
+                DispatchQueue.main.async {
+                    guard let notif = notif else {return}
+                    var arr = [NotificationViewModel]()
+                    for element in notif.notifications {
+                        arr.append(NotificationViewModel(id: nil, description: element.time, name: element.description))
+                    }
+                    
+                    viewController.elements = arr
+                    viewController.tableView.reloadData()
+                    viewController.spinner.stopAnimating()
+                }
+            })
         }
     }
     
@@ -36,5 +83,4 @@ class ManagerSettingsTableViewController: UITableViewController, MFMailComposeVi
                                didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
 }

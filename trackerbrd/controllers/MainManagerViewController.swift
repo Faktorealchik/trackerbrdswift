@@ -42,7 +42,7 @@ class MainManagerTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ManagerTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         
         cell.textLabel?.text = "text"
         
