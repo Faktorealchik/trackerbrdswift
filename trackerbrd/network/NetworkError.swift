@@ -11,5 +11,6 @@ import Foundation
 enum NetworkError: Error {
     case FailInternetError
     case noInternetConnection
-    
+    case BadReturnType
+    case BadRequest
 }

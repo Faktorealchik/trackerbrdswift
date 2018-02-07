@@ -16,11 +16,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet weak var forgetPassowrdButton: UIButton!
     private var rememberMe = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        forgetPassowrdButton.isHidden = true
         loginField.errorColor = .red
         loginField.delegate = self
         passwordField.errorColor = .red
@@ -28,126 +31,96 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         activityIndicator.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
-        let token = userDefaults?.string(forKey: "token")
-        let remember = userDefaults?.bool(forKey: "rememberMe")
-        let type = userDefaults?.integer(forKey: "type")
-        if token != nil && type != nil && remember != nil && remember! {
-            performSegue(type!)
-        }
+    @objc func kbDidShow(notification: Notification){
+        guard let info = notification.userInfo else { return }
+        let frameSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+        scrollView?.contentSize = CGSize(width: self.view.bounds.size.width, height: scrollView.contentSize.height + frameSize.height)
+        scrollView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: frameSize.height, right: 0)
+    }
+    
+    @objc func kbDidHide(notification: Notification){
+        guard let info = notification.userInfo else { return }
+        let frameSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        
+        scrollView?.contentSize = CGSize(width: self.view.bounds.size.width, height: scrollView.contentSize.height - frameSize.height)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    @IBAction func forgetPasswordButtonPressed(_ sender: UIButton) {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        forgetPassowrdButton.isHidden = true
         navigationController?.navigationBar.isHidden = true
     }
     
-    @objc private func kbDidShow(notification: Notification){
-        guard let info = notification.userInfo else { return }
-        let frameSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + frameSize.height)
-        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: frameSize.height, right: 0)
-    }
-    
-    @objc private func kbDidHide(){
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-    }
-    
-    @IBAction func enterPressed(_ sender: UIButton) {
+    @IBAction func enterPressed(_ _: UIButton) {
         guard let login = loginField.text,
             let password = passwordField.text else {return}
         if login != "" && password != "" {
-            sender.isHidden = true
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
-            makeRequestForUser(login, password, sender)
+            makeRequestForUser(login, password)
         } else {
             let reason = login == "" ? "email" : "password"
             self.createAlert(with: "Please, fill in your \(reason)")
         }
     }
     
-    private func makeRequestForUser(_ login: String, _ password: String, _ sender: UIButton) {
+    private func makeRequestForUser(_ login: String, _ password: String) {
+        enterButton.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         do{
-            try processRequest(login, password, sender)
+            try processRequest(login, password.md5)
         } catch {
             self.doMainAsync {
-                sender.isHidden = false
+                self.enterButton.isHidden = false
+                self.createAlert(with: error.localizedDescription)
+                self.activityIndicator.isHidden = true
+                return
             }
-            self.createAlert(with: error.localizedDescription)
-            self.hideActivityIndicator()
-            return
         }
     }
     
-    private func processRequest(_ login: String, _ password: String, _ sender: UIButton) throws {
+    private func processRequest(_ login: String, _ password: String) throws {
         let usr = User(with: login, withMd5: password).dict
         let data = try JSON(usr).rawData()
         UserNetworkService.shared.login(with: data){ [weak self] (user, error) in
             guard error == nil else {
-                self?.createAlert(with: "Password incorrect")
-                //self?.showButton(sender)
                 self?.doMainAsync {
-                    sender.isHidden = false
+                    self?.createAlert(with: "Password incorrect")
+                    self?.enterButton.isHidden = false
+                    self?.activityIndicator.isHidden = true
+                    self?.forgetPassowrdButton.isHidden = false
                 }
-                self?.hideActivityIndicator()
                 return
             }
-            guard let user = user else {
-                return
-            }
+            guard let user = user else {return}
             
             DispatchQueue.main.sync {
+                self?.dismiss(animated: true)
                 let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
                 userDefaults?.set(user.token, forKey: "token")
                 userDefaults?.set(user.type, forKey: "type")
+                userDefaults?.set(user.id, forKey: "idUser")
                 userDefaults?.set(self?.rememberMe, forKey: "rememberMe")
                 userDefaults?.synchronize()
-                self?.hideActivityIndicator()
-                self?.performSegue(user.type)
+                self?.enterButton.isHidden = false
+                self?.activityIndicator.isHidden = true
+                self?.show((self?.storyboard?.instantiateInitialViewController())!, sender: self)
             }
         }
     }
-    
+
     private func doMainAsync(execute work: @escaping () -> ()){
         DispatchQueue.main.async {
             work()
-        }
-    }
-    
-    private func showButton(_ button: UIButton){
-        doMainAsync {
-            button.isHidden = false
-        }
-    }
-
-    private func hideActivityIndicator() {
-        doMainAsync {
-            self.activityIndicator.isHidden = true
-        }
-    }
-    
-    private func createAlert(with error: String?) {
-        doMainAsync {
-            let alert = UIAlertController(title: "Error", message: error ?? "Unexpected error", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(ok)
-            self.present(alert, animated: true)
-        }
-    }
-    
-    private func performSegue(_ type: Int){
-        if type == 0 {
-            self.performSegue(withIdentifier: "segueManager", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "segueDriver", sender: self)
         }
     }
     
@@ -161,15 +134,12 @@ extension LoginViewController: UITextFieldDelegate {
         switch textField.tag {
         case 0: passwordField.becomeFirstResponder()
         case 1: view.endEditing(true)
-        //perform login
+        guard let login = loginField.text,
+            let pass = passwordField.text else {return true}
+        makeRequestForUser(login, pass)
         default:
             loginField.resignFirstResponder()
         }
-        return true
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        textField.text = ""
         return true
     }
     

@@ -6,7 +6,6 @@
 //  Copyright © 2018 Alexandr Nesterov. All rights reserved.
 //
 
-import Foundation
 import CommonCryptoModule
 
 extension String {
@@ -25,13 +24,17 @@ extension String {
         CC_MD5(str!, strLen, result)
         
         let hash = NSMutableString()
-        
         for i in 0..<digestLength {
             hash.appendFormat("%02x", result[i])
         }
         
         result.deinitialize()
-        
         return String(format: hash as String)
+    }
+}
+
+extension Date {
+    var millisecondsSince1970:Int {
+        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 }
