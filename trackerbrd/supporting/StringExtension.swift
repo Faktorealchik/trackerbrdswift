@@ -32,3 +32,9 @@ extension String {
         return String(format: hash as String)
     }
 }
+
+extension Date {
+    var millisecondsSince1970:Int {
+        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+}

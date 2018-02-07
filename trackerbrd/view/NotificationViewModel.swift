@@ -6,12 +6,16 @@
 //  Copyright © 2018 Alexandr Nesterov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NotificationViewModel: SettingsViewModelItem {
     let name: String
     let description: String
     let id: Int64?
+    
+    var color: UIColor {
+        return .black
+    }
     
     var type: SettingsViewModelType {
         return .notifications

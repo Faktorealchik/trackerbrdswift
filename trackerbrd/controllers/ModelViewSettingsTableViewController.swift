@@ -91,6 +91,11 @@ class ModelViewSettingsTableViewController: UITableViewController {
                 cell.accessoryType = .detailDisclosureButton
             }
             return cell
+        case .truck:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Common") as! StandartTableViewCell
+            cell.item = item
+            cell.accessoryType = .disclosureIndicator
+            return cell
         default:
             break
         }

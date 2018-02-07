@@ -6,12 +6,16 @@
 //  Copyright © 2018 Alexandr Nesterov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class CompanyViewModel: SettingsViewModelItem {
     let id: Int64?
     let name: String
     let description: String
+    
+    var color: UIColor {
+        return .black
+    }
     
     var type: SettingsViewModelType {
         return .company

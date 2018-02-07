@@ -12,7 +12,7 @@ import SwiftyJSON
 struct TracNotificationsJson {
     let notifications: [TracNotification]
     
-    init(json: JSON) throws {
+    init(json: JSON) {
         var notif = [TracNotification]()
         
         for (_, subJson):(String, JSON) in json {

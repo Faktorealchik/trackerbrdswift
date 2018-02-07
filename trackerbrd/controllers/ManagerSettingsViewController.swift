@@ -13,7 +13,8 @@ class ManagerSettingsTableViewController: UITableViewController, MFMailComposeVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Settings"
+        
+        setupNavigationBar()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,6 +44,14 @@ class ManagerSettingsTableViewController: UITableViewController, MFMailComposeVi
             if MFMailComposeViewController.canSendMail() {
                 sendEmail()
             }
+        case 9:
+            DispatchQueue.global().async {
+                let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
+                userDefaults?.set(false, forKey: "rememberMe")
+                userDefaults?.synchronize()
+            }
+            let vc = storyboard!.instantiateViewController(withIdentifier: "FirstNavigationController")
+            self.show(vc, sender: self)
         default:
             break
         }

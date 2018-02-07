@@ -11,7 +11,7 @@ import SwiftyJSON
 struct TrucksJson {
     let trucks: [Truck]
     
-    init(with json: JSON) throws {
+    init(with json: JSON) {
         var trucks = [Truck]()
         
         for (_, subJson):(String, JSON) in json {

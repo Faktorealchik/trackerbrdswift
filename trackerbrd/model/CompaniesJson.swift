@@ -12,7 +12,7 @@ import SwiftyJSON
 struct CompaniesJson {
     let companies: [Company]
     
-    init(with json: JSON) throws {
+    init(with json: JSON) {
         var companies = [Company]()
         
         for (_, subJson):(String, JSON) in json {
@@ -23,7 +23,7 @@ struct CompaniesJson {
         self.companies = companies
     }
     
-    init(one json: JSON) throws {
+    init(one json: JSON) {
         var companies = [Company]()
         
         for (_, subJson):(String, JSON) in json {

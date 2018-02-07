@@ -15,9 +15,9 @@ struct TracNotification {
     let dateFormatter = DateFormatter()
     
     init?(dict: Json) {
-        guard let description = dict["description"] as? String else { return nil}
-        guard let isActive = dict["active"] as? Bool else { return nil}
-        guard let time = dict["time"] as? Int64 else { return nil }
+        guard let description = dict["description"] as? String,
+        let isActive = dict["active"] as? Bool,
+        let time = dict["time"] as? Int64 else { return nil }
         
         dateFormatter.dateFormat = "dd.MM.yyyy hh:mm"
         let curTime = Date(timeIntervalSince1970: TimeInterval(time / 1000))

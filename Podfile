@@ -7,6 +7,7 @@ target 'trackerbrd' do
 
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'CommonCryptoModule', '~> 1.0.2'
+  pod 'Starscream', '~> 3.0.2'
   pod 'SwiftyJSON' 
 
   target 'trackerbrdTests' do

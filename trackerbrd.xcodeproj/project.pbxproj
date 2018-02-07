@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05131AAA202B54AD00B1F2C2 /* MessengerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05131AA9202B54AD00B1F2C2 /* MessengerTableViewCell.swift */; };
+		05131AAC202B6F9700B1F2C2 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05131AAB202B6F9700B1F2C2 /* Chat.swift */; };
+		05131AAE202B707400B1F2C2 /* MessengerNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05131AAD202B707400B1F2C2 /* MessengerNetworkService.swift */; };
 		052A4B16200E4CFC00520B21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A4B15200E4CFC00520B21 /* AppDelegate.swift */; };
 		052A4B1B200E4CFC00520B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 052A4B19200E4CFC00520B21 /* Main.storyboard */; };
 		052A4B1D200E4CFD00520B21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052A4B1C200E4CFD00520B21 /* Assets.xcassets */; };
@@ -29,9 +32,11 @@
 		05A7F8FC2028D3610012969A /* Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7F8FB2028D3610012969A /* Truck.swift */; };
 		05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */; };
 		05B5ED15200E82A400D8E98F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B5ED14200E82A400D8E98F /* User.swift */; };
+		05B6C7452029F306006750A5 /* TruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6C7442029F306006750A5 /* TruckViewModel.swift */; };
 		05CAC1202027751900ADBD04 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CAC11F2027751900ADBD04 /* Message.swift */; };
 		05ECB24F2024F22D0038C5EA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECB24E2024F22D0038C5EA /* ViewExtension.swift */; };
 		05F2E2452017A23D00082763 /* MainManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F2E2442017A23D00082763 /* MainManagerViewController.swift */; };
+		05FA6CB8202A3388008D08EA /* MessengerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */; };
 		05FDBA412025B42C00A07C28 /* SettingsViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FDBA402025B42C00A07C28 /* SettingsViewModelType.swift */; };
 		05FDBA452025B54F00A07C28 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FDBA442025B54F00A07C28 /* NotificationViewModel.swift */; };
 		05FDBA472025B60100A07C28 /* CompanyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FDBA462025B60100A07C28 /* CompanyViewModel.swift */; };
@@ -65,6 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05131AA9202B54AD00B1F2C2 /* MessengerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerTableViewCell.swift; sourceTree = "<group>"; };
+		05131AAB202B6F9700B1F2C2 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		05131AAD202B707400B1F2C2 /* MessengerNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerNetworkService.swift; sourceTree = "<group>"; };
 		052A4B12200E4CFC00520B21 /* trackerbrd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trackerbrd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		052A4B15200E4CFC00520B21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		052A4B1A200E4CFC00520B21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,9 +101,11 @@
 		05A7F8FB2028D3610012969A /* Truck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck.swift; sourceTree = "<group>"; };
 		05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsViewController.swift; sourceTree = "<group>"; };
 		05B5ED14200E82A400D8E98F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		05B6C7442029F306006750A5 /* TruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckViewModel.swift; sourceTree = "<group>"; };
 		05CAC11F2027751900ADBD04 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		05ECB24E2024F22D0038C5EA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		05F2E2442017A23D00082763 /* MainManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManagerViewController.swift; sourceTree = "<group>"; };
+		05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerTableViewController.swift; sourceTree = "<group>"; };
 		05FDBA402025B42C00A07C28 /* SettingsViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelType.swift; sourceTree = "<group>"; };
 		05FDBA442025B54F00A07C28 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		05FDBA462025B60100A07C28 /* CompanyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewModel.swift; sourceTree = "<group>"; };
@@ -200,13 +210,14 @@
 		054B9F012014664200C33AA8 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				054B9F062014691F00C33AA8 /* NetworkError.swift */,
 				05CAC11F2027751900ADBD04 /* Message.swift */,
+				054B9F062014691F00C33AA8 /* NetworkError.swift */,
 				054B9F02201466B700C33AA8 /* NetworkService.swift */,
 				054B9F0820146CA500C33AA8 /* UserNetworkService.swift */,
 				0586E82E2022EB6E00FF1994 /* TracNotificationNetworkService.swift */,
 				05FDBA522025D0DA00A07C28 /* CompanyNetworkService.swift */,
 				05A7F8F72028D2D50012969A /* TruckNetworkService.swift */,
+				05131AAD202B707400B1F2C2 /* MessengerNetworkService.swift */,
 				054B9F0A20146E0B00C33AA8 /* Links.swift */,
 			);
 			path = network;
@@ -221,6 +232,7 @@
 				05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */,
 				05FDBA4C2025BB6700A07C28 /* ModelViewSettingsTableViewController.swift */,
 				05FF0C112026F1D60054A5B6 /* CompanyViewController.swift */,
+				05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -235,6 +247,7 @@
 				05FDBA502025CD7700A07C28 /* CompaniesJson.swift */,
 				05A7F8FB2028D3610012969A /* Truck.swift */,
 				05A7F8F92028D35A0012969A /* TrucksJson.swift */,
+				05131AAB202B6F9700B1F2C2 /* Chat.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -245,7 +258,9 @@
 				05FDBA442025B54F00A07C28 /* NotificationViewModel.swift */,
 				0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */,
 				05FDBA462025B60100A07C28 /* CompanyViewModel.swift */,
+				05B6C7442029F306006750A5 /* TruckViewModel.swift */,
 				05FDBA542025D6F900A07C28 /* StandartTableViewCell.swift */,
+				05131AA9202B54AD00B1F2C2 /* MessengerTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -485,12 +500,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-trackerbrd/Pods-trackerbrd-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CommonCryptoModule/CommonCryptoModule.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CommonCryptoModule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FA6CB8202A3388008D08EA /* MessengerTableViewController.swift in Sources */,
 				05FDBA452025B54F00A07C28 /* NotificationViewModel.swift in Sources */,
 				0586E8272022E21400FF1994 /* NotificationTableViewCell.swift in Sources */,
 				05FDBA552025D6F900A07C28 /* StandartTableViewCell.swift in Sources */,
@@ -593,6 +611,8 @@
 				05FDBA532025D0DA00A07C28 /* CompanyNetworkService.swift in Sources */,
 				054B9F03201466B700C33AA8 /* NetworkService.swift in Sources */,
 				05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */,
+				05131AAA202B54AD00B1F2C2 /* MessengerTableViewCell.swift in Sources */,
+				05131AAE202B707400B1F2C2 /* MessengerNetworkService.swift in Sources */,
 				054B9F072014691F00C33AA8 /* NetworkError.swift in Sources */,
 				05FDBA412025B42C00A07C28 /* SettingsViewModelType.swift in Sources */,
 				05F2E2452017A23D00082763 /* MainManagerViewController.swift in Sources */,
@@ -601,7 +621,9 @@
 				054B9F0D20147F3800C33AA8 /* StringExtension.swift in Sources */,
 				052A4B44200E656100520B21 /* LoginViewController.swift in Sources */,
 				054B9F0B20146E0B00C33AA8 /* Links.swift in Sources */,
+				05B6C7452029F306006750A5 /* TruckViewModel.swift in Sources */,
 				052A4B16200E4CFC00520B21 /* AppDelegate.swift in Sources */,
+				05131AAC202B6F9700B1F2C2 /* Chat.swift in Sources */,
 				05FDBA512025CD7700A07C28 /* CompaniesJson.swift in Sources */,
 				05A7F8FC2028D3610012969A /* Truck.swift in Sources */,
 				05ECB24F2024F22D0038C5EA /* ViewExtension.swift in Sources */,

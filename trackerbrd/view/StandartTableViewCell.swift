@@ -17,7 +17,9 @@ class StandartTableViewCell: UITableViewCell {
         didSet {
             guard let item = item else { return }
             name.text = item.name
+            name.textColor = item.color
             country.text = item.description
+            country.textColor = item.color
         }
     }
 }

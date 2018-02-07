@@ -19,13 +19,9 @@ class CompanyNetworkService {
             guard let jsonArray = data else { completion(nil, Message("fail to load data")); return}
             
             let js = JSON(jsonArray)
-            do {
-                let answer = try CompaniesJson(with: js)
-                completion(answer, nil)
-            }
-            catch {
-                completion(nil, Message(error.localizedDescription))
-            }
+            
+            let answer = CompaniesJson(with: js)
+            completion(answer, nil)
         }
     }
     
@@ -36,13 +32,10 @@ class CompanyNetworkService {
             guard let jsonArray = data else { completion(nil, Message("fail to load data")); return}
             
             let js = JSON(jsonArray)
-            do {
-                let answer = try CompaniesJson(one: js)
-                completion(answer, nil)
-            }
-            catch {
-                completion(nil, Message(error.localizedDescription))
-            }
+            
+            let answer = CompaniesJson(one: js)
+            completion(answer, nil)
+            
         }
     }
     

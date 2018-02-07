@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgetPassowrdButton: UIButton!
     private var rememberMe = true
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,11 +54,11 @@ class LoginViewController: UIViewController {
     @IBAction func forgetPasswordButtonPressed(_ sender: UIButton) {
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         forgetPassowrdButton.isHidden = true
         navigationController?.navigationBar.isHidden = true
-        
     }
     
     @IBAction func enterPressed(_ _: UIButton) {
@@ -105,6 +104,7 @@ class LoginViewController: UIViewController {
             guard let user = user else {return}
             
             DispatchQueue.main.sync {
+                self?.dismiss(animated: true)
                 let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
                 userDefaults?.set(user.token, forKey: "token")
                 userDefaults?.set(user.type, forKey: "type")
@@ -113,33 +113,19 @@ class LoginViewController: UIViewController {
                 userDefaults?.synchronize()
                 self?.enterButton.isHidden = false
                 self?.activityIndicator.isHidden = true
-                self?.performSegue(user.type)
+                self?.show((self?.storyboard?.instantiateInitialViewController())!, sender: self)
             }
         }
     }
-    
+
     private func doMainAsync(execute work: @escaping () -> ()){
         DispatchQueue.main.async {
             work()
         }
     }
     
-    private func performSegue(_ type: Int){
-        if type == 0 {
-            self.performSegue(withIdentifier: "segueManager", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "segueDriver", sender: self)
-        }
-    }
-    
     @IBAction func rememberMePressed(_ sender: UISwitch) {
         rememberMe = sender.isOn
-    }
-    
-    @IBAction func unwind(segue: UIStoryboardSegue){
-        let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
-        userDefaults?.set(false, forKey: "rememberMe")
-        userDefaults?.synchronize()
     }
 }
 

@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import Foundation
 
 protocol SettingsViewModelItem {
     var id: Int64? { get }
     var name: String { get }
     var description: String { get }
     var type: SettingsViewModelType { get }
+    var color: UIColor { get }
     
     var descClass: String { get }
 }

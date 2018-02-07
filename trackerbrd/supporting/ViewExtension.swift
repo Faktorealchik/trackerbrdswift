@@ -29,6 +29,13 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    func setupNavigationBar(){
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
+    
     func getCompanies(inVC viewController: ModelViewSettingsTableViewController) {
         DispatchQueue.global().async {
             CompanyNetworkService.shared.getListCompanies(completion: { [weak self] (comp, error) in
@@ -57,22 +64,23 @@ extension UIViewController {
     
     func getTrucks(inVC viewController: ModelViewSettingsTableViewController){
         DispatchQueue.global().async {
-            TruckNetworkService.shared.getListTrucks(completion: { [weak self] (comp, error) in
+            let defaults = UserDefaults(suiteName: "ru.buyitfree")
+            let id = defaults?.object(forKey: "idCompany") as? Int64
+            guard let idCompany = id else { self.createAlert(with: "Choose your company"); return }
+            TruckNetworkService.shared.getListTrucks(id: idCompany, completion: { [weak self] (trucks, error) in
                 guard error == nil else {
                     self?.createAlert(with: error?.description)
                     return
                 }
                 DispatchQueue.main.async {
-                    guard let comp = comp else { return }
-                    var arr = [CompanyViewModel]()
-                    for element in comp.companies {
-                        arr.append(CompanyViewModel(element.id, element.name, element.description ?? "no description"))
+                    guard let trucks = trucks else { return }
+                    var arr = [TruckViewModel]()
+                    for element in trucks.trucks {
+                        arr.append(TruckViewModel(element.id, element.name, element.description ?? "no description", element.typeAvailable ?? 0))
                     }
-                    if arr.count == 1 {
-                        let defaults = UserDefaults(suiteName: "ru.buyitfree")
-                        defaults?.set(arr[0].id, forKey: "idCompany")
-                        defaults?.synchronize()
-                    }
+                    arr.sort(by: { (first, second) -> Bool in
+                        first.typeAvailable < second.typeAvailable
+                    })
                     viewController.elements = arr
                     viewController.tableView.reloadData()
                     viewController.spinner.stopAnimating()

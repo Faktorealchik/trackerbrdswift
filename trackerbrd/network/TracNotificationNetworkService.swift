@@ -24,13 +24,9 @@ class TracNotificationNetworkService{
             guard let jsonArray = data else { completion(nil, NetworkError.FailInternetError); return}
             
             let js = JSON(jsonArray)
-            do {
-                let answer = try TracNotificationsJson(json: js)
-                completion(answer, nil)
-            }
-            catch {
-                print(error)
-            }
+            
+            let answer = TracNotificationsJson(json: js)
+            completion(answer, nil)
         }
     }
 }
