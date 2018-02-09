@@ -88,7 +88,7 @@ class ModelViewSettingsTableViewController: UITableViewController {
             if item.id == idCompany {
                 cell.accessoryType = .checkmark
             } else {
-                cell.accessoryType = .detailDisclosureButton
+                cell.accessoryType = .disclosureIndicator
             }
             return cell
         case .truck:

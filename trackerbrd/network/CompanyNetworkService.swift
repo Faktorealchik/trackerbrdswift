@@ -11,12 +11,12 @@ import SwiftyJSON
 class CompanyNetworkService {
     public static let shared = CompanyNetworkService()
     
-    func getListCompanies(completion: @escaping (CompaniesJson?, Message?) -> ()) {
+    func getListCompanies(completion: @escaping (CompaniesJson?, ErrorMessage?) -> ()) {
         guard let url = URL(string: Links.site.rawValue + Links.companies.rawValue) else { return }
         
         NetworkService.shared.getData(url: url) { (data, response, error) in
-            guard error == nil else { completion(nil, Message(error?.localizedDescription)); return }
-            guard let jsonArray = data else { completion(nil, Message("fail to load data")); return}
+            guard error == nil else { completion(nil, ErrorMessage(error?.localizedDescription)); return }
+            guard let jsonArray = data else { completion(nil, ErrorMessage("fail to load data")); return}
             
             let js = JSON(jsonArray)
             
@@ -25,11 +25,11 @@ class CompanyNetworkService {
         }
     }
     
-    func getOneCompany(with id: Int64, completion: @escaping (CompaniesJson?, Message?) -> ()) {
+    func getOneCompany(with id: Int64, completion: @escaping (CompaniesJson?, ErrorMessage?) -> ()) {
         guard let url = URL(string: Links.site.rawValue + Links.company.rawValue + "\(id)") else { return }
         NetworkService.shared.getData(url: url) { (data, response, error) in
-            guard error == nil else { completion(nil, Message(error?.localizedDescription)); return }
-            guard let jsonArray = data else { completion(nil, Message("fail to load data")); return}
+            guard error == nil else { completion(nil, ErrorMessage(error?.localizedDescription)); return }
+            guard let jsonArray = data else { completion(nil, ErrorMessage("fail to load data")); return}
             
             let js = JSON(jsonArray)
             
@@ -39,16 +39,16 @@ class CompanyNetworkService {
         }
     }
     
-    func updateCompany(_ company: Company, completion: @escaping (Message?) -> ()) {
+    func updateCompany(_ company: Company, completion: @escaping (ErrorMessage?) -> ()) {
         guard let url = URL(string: Links.site.rawValue + Links.updateCompany.rawValue) else { return }
         
         let data = try? JSON(company.dictionary!).rawData()
-        guard data != nil else { completion(Message("Fail to load data")) ; return }
+        guard data != nil else { completion(ErrorMessage("Fail to load data")) ; return }
         NetworkService.shared.postData(url: url, data: data!) { (data, response, error) in
             let httpResponse = response as? HTTPURLResponse
             if httpResponse?.statusCode != 200 {
                 let json = JSON(data!)
-                let message = Message(json)
+                let message = ErrorMessage(json)
                 completion(message)
                 return
             }
@@ -56,16 +56,16 @@ class CompanyNetworkService {
         }
     }
     
-    func addCompany(_ company: Company, completion: @escaping (Message?) -> ()) {
+    func addCompany(_ company: Company, completion: @escaping (ErrorMessage?) -> ()) {
         guard let url = URL(string: Links.site.rawValue + Links.updateCompany.rawValue) else { return }
         
         let data = try? JSON(company.dictionary!).rawData()
-        guard data != nil else { completion(Message("Fail to load data")) ; return }
+        guard data != nil else { completion(ErrorMessage("Fail to load data")) ; return }
         NetworkService.shared.putData(url: url, data: data!) { (data, response, error) in
             let httpResponse = response as? HTTPURLResponse
             if httpResponse?.statusCode != 200 {
                 let json = JSON(data!)
-                let message = Message(json)
+                let message = ErrorMessage(json)
                 completion(message)
                 return
             }
@@ -73,14 +73,14 @@ class CompanyNetworkService {
         }
     }
     
-    func deleteCompany(_ id: Int64, completion: @escaping (Message?) -> ()) {
+    func deleteCompany(_ id: Int64, completion: @escaping (ErrorMessage?) -> ()) {
         guard let url = URL(string: Links.site.rawValue + Links.company.rawValue + "\(id)") else { return }
         
         NetworkService.shared.deleteData(url: url) { (data, response, error) in
             let httpResponse = response as? HTTPURLResponse
             if httpResponse?.statusCode != 200 {
                 let json = JSON(data!)
-                let message = Message(json)
+                let message = ErrorMessage(json)
                 completion(message)
                 return
             }

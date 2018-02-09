@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import Starscream
 
 class MessengerTableViewController: UITableViewController {
     var chats: [Chat]?
     let dateFormatter = DateFormatter()
-
+    var socket: WebSocket?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.global().async {
+            let userDefaults = UserDefaults(suiteName: "ru.buyitfree")
+            guard let id = userDefaults?.object(forKey: "idUser") as? Int64 else { return }
+            self.socket = WebSocket(url: URL(string: "ws://localhost:8081/socket/\(id)")!, protocols: ["chat"])
+            self.socket?.delegate = self
+            self.socket?.connect()
+        }
         
         self.dateFormatter.dateFormat = "HH:mm"
         
         self.setupNavigationBar()
+    }
+    
+    deinit {
+        socket?.disconnect(forceTimeout: 0)
+        socket?.delegate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +69,16 @@ class MessengerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "msg" {
+            let destVC = segue.destination as! MsgViewController
+            let chat = chats?[(tableView.indexPathForSelectedRow?.row)!]
+            destVC.chat = chat
+            destVC.socket = self.socket
+            getMessages(0, 20, chat!.id, destVC)
+        }
+    }
 }
 
 extension MessengerTableViewController {
@@ -73,5 +98,11 @@ extension MessengerTableViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+}
+
+extension MessengerTableViewController: WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("connected")
     }
 }
