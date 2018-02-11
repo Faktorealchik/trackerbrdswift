@@ -49,7 +49,7 @@ struct MessagesJson {
     
     init(with json: JSON) {
         var msg = [Message]()
-        
+
         for (_, subJson):(String, JSON) in json {
             guard let message = Message(with: subJson.dictionaryObject!) else { continue }
             msg.append(message)

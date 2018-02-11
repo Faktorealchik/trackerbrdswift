@@ -97,8 +97,12 @@ extension UIViewController {
                     return
                 }
                 DispatchQueue.main.async {
-                    vc.messages = messages?.messages
-                    vc.collectionView?.reloadData()
+                    vc.messages = messages?.messages.reversed()
+                    vc.collectionView.reloadData()
+                    guard let msg = vc.messages else { return }
+                    let lastItem = msg.count - 1
+                    let path = IndexPath(item: lastItem, section: 0)
+                    vc.collectionView.scrollToItem(at: path, at: .bottom, animated: false)
                 }
             })
         }

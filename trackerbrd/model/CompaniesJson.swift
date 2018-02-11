@@ -25,9 +25,8 @@ struct CompaniesJson {
     
     init(one json: JSON) {
         var companies = [Company]()
-        print(json)
-        for (_, _):(String, JSON) in json {
-            guard let company = Company(with: json.dictionaryObject!) else { continue }
+        for (_, j):(String, JSON) in json {
+            guard let company = Company(with: j.dictionaryObject!) else { continue }
             companies.append(company)
         }
         
