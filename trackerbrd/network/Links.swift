@@ -28,4 +28,5 @@ enum Links: String {
     case trucks = "/trucks" //get
     
     case chats = "/chat/chats" //get
+    case msg = "/chat/messages"
 }

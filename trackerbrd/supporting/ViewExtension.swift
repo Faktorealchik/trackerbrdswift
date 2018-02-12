@@ -88,4 +88,23 @@ extension UIViewController {
             })
         }
     }
+    
+    func getMessages(_ from: Int, _ to: Int, _ chat: Int64, _ vc: MsgViewController) {
+        DispatchQueue.global().async {
+            MessengerNetworkService.shared.getMessages(from, to, chat, completion: { [weak self] (messages, error) in
+                guard error == nil else {
+                    self?.createAlert(with: error?.description)
+                    return
+                }
+                DispatchQueue.main.async {
+                    vc.messages = messages?.messages.reversed()
+                    vc.collectionView.reloadData()
+                    guard let msg = vc.messages else { return }
+                    let lastItem = msg.count - 1
+                    let path = IndexPath(item: lastItem, section: 0)
+                    vc.collectionView.scrollToItem(at: path, at: .bottom, animated: false)
+                }
+            })
+        }
+    }
 }

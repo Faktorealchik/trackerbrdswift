@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-struct Message: Error {
+struct ErrorMessage: Error {
     let description: String
     
     init(_ json: JSON){

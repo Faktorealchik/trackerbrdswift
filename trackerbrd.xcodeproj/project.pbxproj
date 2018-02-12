@@ -23,6 +23,7 @@
 		054B9F0B20146E0B00C33AA8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F0A20146E0B00C33AA8 /* Links.swift */; };
 		054B9F0D20147F3800C33AA8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9F0C20147F3800C33AA8 /* StringExtension.swift */; };
 		05634A6B200FCB6B0087EBD0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05634A6A200FCB6B0087EBD0 /* RegisterViewController.swift */; };
+		057491A4202CD6F800852538 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057491A3202CD6F800852538 /* MessageCollectionViewCell.swift */; };
 		0586E8272022E21400FF1994 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */; };
 		0586E82B2022E71200FF1994 /* TracNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E82A2022E71200FF1994 /* TracNotification.swift */; };
 		0586E82D2022E8D700FF1994 /* TracNotificationsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0586E82C2022E8D700FF1994 /* TracNotificationsJson.swift */; };
@@ -33,7 +34,10 @@
 		05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */; };
 		05B5ED15200E82A400D8E98F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B5ED14200E82A400D8E98F /* User.swift */; };
 		05B6C7452029F306006750A5 /* TruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6C7442029F306006750A5 /* TruckViewModel.swift */; };
-		05CAC1202027751900ADBD04 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CAC11F2027751900ADBD04 /* Message.swift */; };
+		05CAC1202027751900ADBD04 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CAC11F2027751900ADBD04 /* ErrorMessage.swift */; };
+		05E9991D202CB31600B4F56C /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9991C202CB31600B4F56C /* MsgViewController.swift */; };
+		05E9991F202CBE4700B4F56C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9991E202CBE4700B4F56C /* Message.swift */; };
+		05E99921202CC7F600B4F56C /* SocketExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E99920202CC7F600B4F56C /* SocketExtension.swift */; };
 		05ECB24F2024F22D0038C5EA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECB24E2024F22D0038C5EA /* ViewExtension.swift */; };
 		05F2E2452017A23D00082763 /* MainManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F2E2442017A23D00082763 /* MainManagerViewController.swift */; };
 		05FA6CB8202A3388008D08EA /* MessengerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */; };
@@ -92,6 +96,7 @@
 		054B9F0A20146E0B00C33AA8 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		054B9F0C20147F3800C33AA8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		05634A6A200FCB6B0087EBD0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		057491A3202CD6F800852538 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0586E8262022E21400FF1994 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		0586E82A2022E71200FF1994 /* TracNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracNotification.swift; sourceTree = "<group>"; };
 		0586E82C2022E8D700FF1994 /* TracNotificationsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracNotificationsJson.swift; sourceTree = "<group>"; };
@@ -102,7 +107,10 @@
 		05ADC953201E49A20012777E /* ManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsViewController.swift; sourceTree = "<group>"; };
 		05B5ED14200E82A400D8E98F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05B6C7442029F306006750A5 /* TruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckViewModel.swift; sourceTree = "<group>"; };
-		05CAC11F2027751900ADBD04 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		05CAC11F2027751900ADBD04 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		05E9991C202CB31600B4F56C /* MsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
+		05E9991E202CBE4700B4F56C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		05E99920202CC7F600B4F56C /* SocketExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketExtension.swift; sourceTree = "<group>"; };
 		05ECB24E2024F22D0038C5EA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		05F2E2442017A23D00082763 /* MainManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManagerViewController.swift; sourceTree = "<group>"; };
 		05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerTableViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +218,7 @@
 		054B9F012014664200C33AA8 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				05CAC11F2027751900ADBD04 /* Message.swift */,
+				05CAC11F2027751900ADBD04 /* ErrorMessage.swift */,
 				054B9F062014691F00C33AA8 /* NetworkError.swift */,
 				054B9F02201466B700C33AA8 /* NetworkService.swift */,
 				054B9F0820146CA500C33AA8 /* UserNetworkService.swift */,
@@ -233,6 +241,7 @@
 				05FDBA4C2025BB6700A07C28 /* ModelViewSettingsTableViewController.swift */,
 				05FF0C112026F1D60054A5B6 /* CompanyViewController.swift */,
 				05FA6CB7202A3388008D08EA /* MessengerTableViewController.swift */,
+				05E9991C202CB31600B4F56C /* MsgViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 				05A7F8FB2028D3610012969A /* Truck.swift */,
 				05A7F8F92028D35A0012969A /* TrucksJson.swift */,
 				05131AAB202B6F9700B1F2C2 /* Chat.swift */,
+				05E9991E202CBE4700B4F56C /* Message.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -261,6 +271,7 @@
 				05B6C7442029F306006750A5 /* TruckViewModel.swift */,
 				05FDBA542025D6F900A07C28 /* StandartTableViewCell.swift */,
 				05131AA9202B54AD00B1F2C2 /* MessengerTableViewCell.swift */,
+				057491A3202CD6F800852538 /* MessageCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -277,6 +288,7 @@
 				05FDBA482025B65200A07C28 /* SettingsViewModelItem.swift */,
 				054B9F0C20147F3800C33AA8 /* StringExtension.swift */,
 				05ECB24E2024F22D0038C5EA /* ViewExtension.swift */,
+				05E99920202CC7F600B4F56C /* SocketExtension.swift */,
 			);
 			path = supporting;
 			sourceTree = "<group>";
@@ -609,6 +621,7 @@
 				05FDBA552025D6F900A07C28 /* StandartTableViewCell.swift in Sources */,
 				0586E82B2022E71200FF1994 /* TracNotification.swift in Sources */,
 				05FDBA532025D0DA00A07C28 /* CompanyNetworkService.swift in Sources */,
+				05E99921202CC7F600B4F56C /* SocketExtension.swift in Sources */,
 				054B9F03201466B700C33AA8 /* NetworkService.swift in Sources */,
 				05ADC954201E49A20012777E /* ManagerSettingsViewController.swift in Sources */,
 				05131AAA202B54AD00B1F2C2 /* MessengerTableViewCell.swift in Sources */,
@@ -622,17 +635,20 @@
 				052A4B44200E656100520B21 /* LoginViewController.swift in Sources */,
 				054B9F0B20146E0B00C33AA8 /* Links.swift in Sources */,
 				05B6C7452029F306006750A5 /* TruckViewModel.swift in Sources */,
+				057491A4202CD6F800852538 /* MessageCollectionViewCell.swift in Sources */,
 				052A4B16200E4CFC00520B21 /* AppDelegate.swift in Sources */,
 				05131AAC202B6F9700B1F2C2 /* Chat.swift in Sources */,
 				05FDBA512025CD7700A07C28 /* CompaniesJson.swift in Sources */,
 				05A7F8FC2028D3610012969A /* Truck.swift in Sources */,
 				05ECB24F2024F22D0038C5EA /* ViewExtension.swift in Sources */,
+				05E9991D202CB31600B4F56C /* MsgViewController.swift in Sources */,
 				05A7F8FA2028D35A0012969A /* TrucksJson.swift in Sources */,
 				054B9F0920146CA500C33AA8 /* UserNetworkService.swift in Sources */,
 				05FDBA472025B60100A07C28 /* CompanyViewModel.swift in Sources */,
+				05E9991F202CBE4700B4F56C /* Message.swift in Sources */,
 				05A7F8F82028D2D50012969A /* TruckNetworkService.swift in Sources */,
 				05B5ED15200E82A400D8E98F /* User.swift in Sources */,
-				05CAC1202027751900ADBD04 /* Message.swift in Sources */,
+				05CAC1202027751900ADBD04 /* ErrorMessage.swift in Sources */,
 				05634A6B200FCB6B0087EBD0 /* RegisterViewController.swift in Sources */,
 				05FF0C122026F1D60054A5B6 /* CompanyViewController.swift in Sources */,
 				0586E82D2022E8D700FF1994 /* TracNotificationsJson.swift in Sources */,
