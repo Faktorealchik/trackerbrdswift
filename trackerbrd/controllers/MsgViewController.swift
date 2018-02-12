@@ -60,6 +60,7 @@ class MsgViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     @IBAction func onSend(_ sender: UIButton) {
@@ -80,24 +81,27 @@ extension MsgViewController: UICollectionViewDataSource, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MessageCollectionViewCell
         
         cell.textLabel.text = messages?[indexPath.row].text
-        
+        cell.textLabel.clipsToBounds = true
         cell.msgView.layer.cornerRadius = 15
         cell.msgView.clipsToBounds = true
 
         if let text = messages?[indexPath.row].text {
             let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estHeight = NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)], context: nil)
+            let estHeight = NSString(string: text).boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)], context: nil)
 
-            cell.textLabel.frame = CGRect(x: 16 + 8, y: 0, width: estHeight.width + 16, height: estHeight.height + 20)
-            cell.msgView.frame = CGRect(x:16, y:0, width: estHeight.width + 16, height: estHeight.height + 50)
+            // if message not me { }
+            cell.msgView.frame = CGRect(x: 48 + 8, y: 0,width: estHeight.width + 16, height: estHeight.height + 20)
+            cell.textLabel.frame = CGRect(x: 48 - 10, y: -4, width: estHeight.width + 16 + 8, height: estHeight.height + 20 + 6)
+            
+            //cell.textLabel.frame = CGRect(x: 16 + 8, y: 0, width: estHeight.width + 16, height: estHeight.height + 20)
+            //cell.msgView.frame = CGRect(x:16, y:0, width: estHeight.width + 16, height: estHeight.height + 50)
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages?.count ?? 1
+        return messages?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -111,8 +115,7 @@ extension MsgViewController: UICollectionViewDelegateFlowLayout {
         
         if let messageText = message?.text {
             let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)], context: nil)
+            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)], context: nil)
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 20)
         }
         return CGSize(width: view.frame.width, height: 100)
